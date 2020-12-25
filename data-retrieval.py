@@ -31,12 +31,24 @@ selected_target
 
 #bioactivity data, reported as IC50 values
 activity = new_client.activity
+#selected target is the target_chembl_id and filter select the IC50 containing values 
 res = activity.filter(target_chembl_id=selected_target).filter(standard_type="IC50")
 
 df = pd.DataFrame.from_dict(res)
-df.head(3)
 #will print table
+#only view first 5 rows 
+df.head(5)
 
+#bioactivity unit type IC50 was selected, check this 
+df.standard_type.unique()
+# will print array(['IC50'], dtype=object)
+
+#standard value is also seen in the printed table, this is the drug potency. The lower the number, the more potent("better") the drug 
+#we want the standard value number to be as low as possilbe
+# meaning tha the inhibitory concentration at 50% will have a lower concentration 
+#in order to elicit 50% of the inhibition of a target protein, a lower concentration of the drug is required
+# save bioactivity dta to csv file 
+df.to_csv('bioactivity_data.csv', index=False)
 
 
 

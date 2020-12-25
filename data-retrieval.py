@@ -51,6 +51,75 @@ df.standard_type.unique()
 df.to_csv('bioactivity_data.csv', index=False)
 
 
+#missing datain the standard_value column 
+df2 = df[df.standard_value.notna()]
+df2
+
+#in this dataset there are no missing values in the standard_value column 
+
+#labeling compounds as active, inactive or intermediate
+#The bioactivity data is in the IC50 unit. 
+# values of less than 1000 nM = active 
+# greater than 10,000 nM = inactive. 
+# 1,000 and 10,000 nM = intermediate.
+bioactivity_class = []
+for i in df2.standard_value:
+  if float(i) >= 10000:
+    bioactivity_class.append("inactive")
+  elif float(i) <= 1000:
+    bioactivity_class.append("active")
+  else:
+    bioactivity_class.append("intermediate")
+    
+    
+#iterate molecule_chembl_id into list
+mol_cid = []
+for i in df2.molecule_chembl_id:
+  mol_cid.append(i)
+  
+  
+  # iterate canonical_smiles into list
+  canonical_smiles = []
+for i in df2.canonical_smiles:
+  canonical_smiles.append(i)
+  
+  # iterate standard_value into list
+  standard_value = []
+for i in df2.standard_value:
+  standard_value.append(i)
+  
+  #combine into dataframe 
+  data_tuples = list(zip(mol_cid, canonical_smiles, bioactivity_class, standard_value))
+df3 = pd.DataFrame( data_tuples,  columns=['molecule_chembl_id', 'canonical_smiles', 'bioactivity_class', 'standard_value'])
+  
+  
+  #save 
+  df3.to_csv('bioactivity_preprocessed_data.csv', index=False)
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
 
 
 

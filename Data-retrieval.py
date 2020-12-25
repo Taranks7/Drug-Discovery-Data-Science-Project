@@ -27,5 +27,19 @@ targets
 selected_target = targets.target_chembl_id[4]
 
 selected_target
-#will output 'CHEMBL3927'
+#will output 'CHEMBL3927', this is it's unique target id
+
+#bioactivity data, reported as IC50 values
+activity = new_client.activity
+res = activity.filter(target_chembl_id=selected_target).filter(standard_type="IC50")
+
+df = pd.DataFrame.from_dict(res)
+df.head(3)
+#will print table
+
+
+
+
+
+
 

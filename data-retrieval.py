@@ -82,32 +82,3 @@ pd.concat([df3,pd.Series(bioactivity_class)], axis=1)
 
   #save 
   df3.to_csv('bioactivity_preprocessed_data.csv', index=False)
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-
-

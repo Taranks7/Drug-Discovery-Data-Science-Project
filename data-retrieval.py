@@ -72,27 +72,14 @@ for i in df2.standard_value:
     bioactivity_class.append("intermediate")
     
     
-#iterate molecule_chembl_id into list
-mol_cid = []
-for i in df2.molecule_chembl_id:
-  mol_cid.append(i)
-  
-  
-  # iterate canonical_smiles into list
-  canonical_smiles = []
-for i in df2.canonical_smiles:
-  canonical_smiles.append(i)
-  
-  # iterate standard_value into list
-  standard_value = []
-for i in df2.standard_value:
-  standard_value.append(i)
-  
-  #combine into dataframe 
-  data_tuples = list(zip(mol_cid, canonical_smiles, bioactivity_class, standard_value))
-df3 = pd.DataFrame( data_tuples,  columns=['molecule_chembl_id', 'canonical_smiles', 'bioactivity_class', 'standard_value'])
-  
-  
+selection = ['molecule_chembl_id', 'canonical_smiles', 'standard_value']
+df3 = df2[selection]
+df3
+
+#add bioactivity 
+pd.concat([df3,pd.Series(bioactivity_class)], axis=1)
+
+
   #save 
   df3.to_csv('bioactivity_preprocessed_data.csv', index=False)
 

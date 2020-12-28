@@ -48,7 +48,7 @@ df.standard_type.unique()
 # meaning tha the inhibitory concentration at 50% will have a lower concentration 
 #in order to elicit 50% of the inhibition of a target protein, a lower concentration of the drug is required
 # save bioactivity dta to csv file 
-df.to_csv('bioactivity_data.csv', index=False)
+df.to_csv('bioactivity_data_raw.csv', index=False)
 
 
 #missing datain the standard_value column 
@@ -74,11 +74,10 @@ for i in df2.standard_value:
     
 selection = ['molecule_chembl_id', 'canonical_smiles', 'standard_value']
 df3 = df2[selection]
-df3
 
 #add bioactivity 
-pd.concat([df3,pd.Series(bioactivity_class)], axis=1)
-
+bioactivity_class = pd.Series(bioactivity_class, name='bioactivity_class')
+df4 = pd.concat([df3, bioactivity_class], axis=1)
 
   #save 
-  df3.to_csv('bioactivity_preprocessed_data.csv', index=False)
+df4.to_csv('bioactivity_preprocessed_data.csv', index=False)

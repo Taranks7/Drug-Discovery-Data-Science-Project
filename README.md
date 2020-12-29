@@ -3,7 +3,7 @@
 - Identify coumpound or molecule which can inhibit the function of the coronavirus 3C-like proteinase
 - Biological activity data used to train regression model
 
-![final image](https://user-images.githubusercontent.com/74196907/103291366-725c7d80-49e3-11eb-8223-2077fcac0744.png)
+![final image](https://user-images.githubusercontent.com/74196907/103291535-e72fb780-49e3-11eb-8d6b-e56d3c05ed9a.png)
 
 Scatter plot showing the experimental and predicted pIC50 values based on the Regression model 
 

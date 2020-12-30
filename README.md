@@ -1,7 +1,8 @@
 # Drug Discovery Data-Science: Project Overview # 
 - Retrieve biological activity data of target proteins and compounds from the ChEMBL database
 - Identify compound or molecule which can inhibit the function of the coronavirus 3C-like proteinase
-- Biological activity data used to build a regression model to predict pIC50 values
+- Biological activity data used to train a regression model to predict pIC50 values
+
 
 ![final image](https://user-images.githubusercontent.com/74196907/103291535-e72fb780-49e3-11eb-8d6b-e56d3c05ed9a.png)
 
